@@ -1,7 +1,7 @@
 '''
 @title Connect N
 @author Carlos Barcelos
-@date TODO
+@date 24 Sept. 2018'\n'
 '''
 
 import argparse # Command line arguments
