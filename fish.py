@@ -88,7 +88,7 @@ def randomPlay(p1, p2):
         return False
 
     ask = random.choice(p1.hand).value
-
+    print('Do you have a > ' + str(ask))
     if any(ask in c.value for c in p2.hand):
 
         matchedCards = [c for c in p2.hand if c.value == ask] # Get matched cards
