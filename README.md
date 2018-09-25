@@ -5,5 +5,5 @@ A collection of simple, Pythonic games created out of boredom for boredom.
 - [x] Boggle
 - [x] Connect N
 - [x] Go Fish
-- [ ] Solitaire
+- [ ] Solitaire _Paused. Need GUI_
 - [ ] Snakes and Ladders
