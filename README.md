@@ -6,6 +6,7 @@ A collection of simple, Pythonic games created out of boredom for boredom.
 - [x] Connect N
 - [x] 2048
 - [x] Go Fish
+- [x] War
 - [ ] Solitaire _Paused. Need GUI_
 - [ ] Snakes and Ladders
 - [ ] Text Adventure _Developing_
