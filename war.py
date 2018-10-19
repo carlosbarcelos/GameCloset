@@ -1,5 +1,6 @@
 # The game of war. By CJ Barcelos.
 # V1: 5/19/2015
+# V2: 10/19/2018
 
 from random import randint
 import time
@@ -40,31 +41,31 @@ def play():
     global P2
     global pos
     global rnd
-    print "Player 1's Starting Hand:"
-    print P1
-    print "Player 2's Starting Hand:"
-    print P2
+    print("Player 1's Starting Hand:")
+    print(P1)
+    print("Player 2's Starting Hand:")
+    print(P2)
     while len(P1) != 0 and len(P2) != 0:
         pot = [P1[0]] + [P2[0]]
         P1.remove(P1[0])
         P2.remove(P2[0])
         rnd += 1
-        print "Round" + " " + str(rnd)
-        print pot
+        print("Round" + " " + str(rnd))
+        print(pot)
         if pot[0] > pot[1]:                 # P1 Wins round
             P1 += pot      # ADD feature to alterate how cards are placed in hand to avoid endless games
             pot = []
-            print "P1 Wins Round"
-            print "P1 Hand: " + str(len(P1))
-            print "P2 Hand: " + str(len(P2))
+            print("P1 Wins Round")
+            print("P1 Hand: " + str(len(P1)))
+            print("P2 Hand: " + str(len(P2)))
         elif pot[0] < pot[1]:               # P2 Wins round
             P2 += pot
             pot = []
-            print "P2 Wins Round"
-            print "P1 Hand: " + str(len(P1))
-            print "P2 Hand: " + str(len(P2))
+            print("P2 Wins Round")
+            print("P1 Hand: " + str(len(P1)))
+            print("P2 Hand: " + str(len(P2)))
         else: tie()                         # War tie breaker
-        print "//////////////////////////////"
+        print("//////////////////////////////")
 
 
 def tie():      # WORK ON THIS!!! Make so running out of cards dosen't end game.
@@ -73,14 +74,14 @@ def tie():      # WORK ON THIS!!! Make so running out of cards dosen't end game.
     global P2
     global pos
     if len(P1) < 4:
-        print "Player 1 Ran Out of Cards."
+        print("Player 1 Ran Out of Cards.")
     elif len(P2) < 4:
-        print "Player 2 Ran Out of Cards."
+        print("Player 2 Ran Out of Cards.")
     else:
         if len(P1) == 0:          # Is this part necessary??????
-            print "P2 Wins! Congratulations P2!"
+            print ("P2 Wins! Congratulations P2!")
         elif len(P2) == 0:
-            print "P1 Wins! Congratulations P1!"
+            print("P1 Wins! Congratulations P1!")
         else:
             if len(pot) == 2:
                 pos += 5
@@ -93,25 +94,25 @@ def tie():      # WORK ON THIS!!! Make so running out of cards dosen't end game.
                 P1 += pot
                 pot = []
                 pos = 0
-                print "P1 Wins Round"
-                print "P1 Hand: " + str(len(P1))
-                print "P2 Hand: " + str(len(P2))
+                print("P1 Wins Round")
+                print("P1 Hand: " + str(len(P1)))
+                print("P2 Hand: " + str(len(P2)))
             elif pot[pos] < pot[pos + 4]:
                 P2 += pot
                 pot = []
                 pos = 0
-                print "P2 Wins Round"
-                print "P1 Hand: " + str(len(P1))
-                print "P2 Hand: " + str(len(P2))
+                print("P2 Wins Round")
+                print("P1 Hand: " + str(len(P1)))
+                print("P2 Hand: " + str(len(P2)))
             else: tie()
 
 # Result function outputs a winning mesage based on which player runs of cards.
 def report():
     if len(P1) == 0:
-        print "P2 Wins! Congratulations P2!"
+        print("P2 Wins! Congratulations P2!")
     elif len(P2) == 0:
-        print "P1 Wins! Congratulations P1!"
-    else: print "Something Went Wrong."
+        print("P1 Wins! Congratulations P1!")
+    else: print("Something Went Wrong.")
 
 # Reset function sets variables to initial state as to play again.
 def reset():
@@ -132,3 +133,7 @@ def war():
     report()
     reset()
     print("This game took %s seconds to play" % (time.time() - start_time))
+
+# Run Main
+if __name__ == '__main__':
+    war()
