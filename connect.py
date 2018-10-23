@@ -4,6 +4,7 @@
 @date 24 Sept. 2018
 '''
 
+from os import system
 import argparse # Command line arguments
 import random   # Random seed
 
@@ -48,6 +49,8 @@ class Board:
         return True
 
     def display(self):
+        # Clear the screen and display the current game board
+        system('cls')
         for rows in self.board:
             printString = ''
             for cols in rows:
