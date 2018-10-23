@@ -1,10 +1,12 @@
-# The game of war. By CJ Barcelos.
-# V1: 5/19/2015
-# V2: 10/19/2018
+'''
+@title War
+@author Carlos Barcelos
+@V1: 5/19/2015
+@V2: 10/19/2018
+'''
 
 from random import shuffle
 import time
-import sys
 
 ##################
 ## Player Class ##
@@ -26,8 +28,10 @@ class Player():
 
     # Add a list of n cards to the hand
     def takeCards(self, loc):
-        for c in loc:
-            self.hand = self.hand + [loc.pop()]
+        cnt = len(loc)
+        for i in range(cnt):
+            self.hand = self.hand + [loc[i]]
+
 ######################
 ## End Player Class ##
 ######################
@@ -56,29 +60,31 @@ class Game():
     def play(self, n):
         self.round += 1
         print(f'Round {self.round}')
-        self.pot = [[],[]]
-        self.pot[0] = self.p1.getCards(n)
-        self.pot[1] = self.p2.getCards(n)
+
+        # Put the cards on the table
+        self.pot[0] += self.p1.getCards(n)
+        self.pot[1] += self.p2.getCards(n)
+        print(f'P1: {self.pot[0]}  |  {self.pot[1]} :P2')
 
         # Player 1 wins this round
-        if self.pot[0] > self.pot[1]:
+        if self.pot[0][-1] > self.pot[1][-1]:
             self.p1.takeCards(self.pot[0]+self.pot[1])
             print(f'{self.p1.name} wins the round')
-            print(f'{self.p1.name} hand : {len(self.p1.hand)}')
-            print(f'{self.p2.name} hand : {len(self.p2.hand)}')
-
         # Player 2 wins this round
-        elif self.pot[0] < self.pot[1]:
+        elif self.pot[0][-1] < self.pot[1][-1]:
             self.p2.takeCards(self.pot[0]+self.pot[1])
             print(f'{self.p2.name} wins the round')
-            print(f'{self.p2.name} hand : {len(self.p2.hand)}')
-            print(f'{self.p1.name} hand : {len(self.p1.hand)}')
-
         # There is a tie
         else:
             print('WAR. Moving to tie breaker.')
             return self.play(3)
-        print('*****')
+
+        # Report the results of the round
+        print(f'{self.p1.name} hand : {len(self.p1.hand)}')
+        print(f'{self.p2.name} hand : {len(self.p2.hand)}')
+        print('**********')
+        self.pot = [[],[]]
+        return
 
     # Return the winning player
     def getWinner(self):
@@ -100,12 +106,12 @@ def main():
     p2 = Player('P2')
     g = Game(p1, p2)
     g.deal()
-
+    # Play the game
     while g.getWinner() is None:
         g.play(1)
-
+    # Report the results
     print(f'{g.getWinner()} wins!')
-    print('This game took {0:.2f} seconds to play'.format(time.time() - start,3))
+    print('This game took {0:.3f} seconds to play'.format(time.time() - start,3))
 
 # Run Main
 if __name__ == '__main__':

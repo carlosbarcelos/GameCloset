@@ -10,3 +10,5 @@ A collection of simple, Pythonic games created out of boredom for boredom.
 - [ ] Solitaire _Paused. Need GUI_
 - [ ] Snakes and Ladders
 - [ ] Text Adventure _Developing_
+- [ ] Snake
+- [ ] Pong
